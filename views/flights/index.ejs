@@ -10,7 +10,7 @@
         <th>Arline</th>
         <th>Airport</th>
         <th>Flight No</th>
-        <th>Date/Time</th>
+        <th>Departure Date/Time</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +21,14 @@
         <td><%= flight.airport %></td>
         <td><%= flight.flightNo %></td>
         <td><%= flight.departs %></td>
+        <td>
+          <form
+            action="/flights/<%= flight._id %>?_method=DELETE"
+            method="POST"
+          >
+            <button>X</button>
+          </form>
+        </td>
       </tr>
       <% }) %>
     </tbody>

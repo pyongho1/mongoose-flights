@@ -23,7 +23,7 @@ function newFlight(req, res) {
 function create(req, res) {
   Flight.create(req.body)
     .then((flight) => {
-      res.redirect("/flights/new");
+      res.redirect("/flights");
     })
     .catch((err) => {
       console.log(err);
@@ -31,4 +31,15 @@ function create(req, res) {
     });
 }
 
-export { newFlight as new, create, index };
+function deleteFlight(req, res) {
+  Flight.findByIdAndDelete(req.params.id)
+    .then((flight) => {
+      res.redirect("/flights");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/");
+    });
+}
+
+export { newFlight as new, create, index, deleteFlight as delete };
