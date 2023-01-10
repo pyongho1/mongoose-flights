@@ -1,4 +1,4 @@
-import { Flight } from "../models/movie.js";
+import { Flight } from "../models/flight.js";
 
 function index(req, res) {
   Flight.find({})
@@ -72,9 +72,15 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  for (let key in req.body) {
-    if (req.body[key] === "") delete req.body[key];
+  if (req.body.departs === "") {
+    let date = new Date();
+    let oneYearFromNow = date.getFullYear() + 1;
+    date.setFullYear(oneYearFromNow);
+    req.body.departs = date;
   }
+  // for (let key in req.body) {
+  //   if (req.body[key] === "") delete req.body[key];
+  // }
   Flight.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((flight) => {
       res.redirect(`/flights/${flight._id}`);
