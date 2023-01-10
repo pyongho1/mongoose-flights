@@ -56,4 +56,18 @@ function show(req, res) {
     });
 }
 
+function edit(req, res) {
+  Flight.findById(req.params.id)
+    .then((flight) => {
+      res.render("flights/edit", {
+        title: "Edit Movie",
+        flight,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/");
+    });
+}
+
 export { newFlight as new, create, index, deleteFlight as delete, show, edit };
