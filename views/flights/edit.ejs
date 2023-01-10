@@ -11,20 +11,25 @@
   >
     <label for="airline-select">Airline:</label>
     <select name="airline" id="airline-select">
-      <option value="American">American</option>
-      <option value="SouthWest">SouthWest</option>
-      <option value="United">United</option>
+      <option value="American" <%= flight.airline === "American" ? "selected" : ""%>>American</option>
+      <option value="SouthWest" <%= flight.airline === "Southwest" ? "selected" : ""%>>SouthWest</option>
+      <option value="United" <%= flight.airline === "United" ? "selected" : ""%>>United</option>
     </select>
     <label for="airport-select">Airport:</label>
     <select name="airport" id="airport-select">
-      <option value="AUS">AUS</option>
-      <option value="DFW">DFW</option>
-      <option value="DEN">DEN</option>
-      <option value="LAX">LAX</option>
-      <option value="SAN">SAN</option>
+      <option value="AUS" <%= flight.airport === "AUS" ? "selected" : ""%>>AUS</option>
+      <option value="DFW" <%= flight.airport === "DFW" ? "selected" : ""%>>DFW</option>
+      <option value="DEN" <%= flight.airport === "DEN" ? "selected" : ""%>>DEN</option>
+      <option value="LAX" <%= flight.airport === "LAX" ? "selected" : ""%>>LAX</option>
+      <option value="SAN" <%= flight.airport === "SAN" ? "selected" : ""%>>SAN</option>
     </select>
     <label for="flightNo-input">Flight No:</label>
-    <input type="number" name="flightNo" id="flightNo-input" />
+    <input
+      type="number"
+      name="flightNo"
+      value="<%= flight.flightNo %>"
+      id="flightNo-input"
+    />
     <label for="departs-date">Departing Date:</label>
     <input type="datetime-local" name="departs" id="departs-date" />
     <button type="submit">Save Flight</button>
