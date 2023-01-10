@@ -42,4 +42,18 @@ function deleteFlight(req, res) {
     });
 }
 
-export { newFlight as new, create, index, deleteFlight as delete };
+function show(req, res) {
+  Flight.findById(req.params.id)
+    .then((flight) => {
+      res.render("flights/show", {
+        title: "Flight Detail",
+        flight,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/");
+    });
+}
+
+export { newFlight as new, create, index, deleteFlight as delete, show, edit };
