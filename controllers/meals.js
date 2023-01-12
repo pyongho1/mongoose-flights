@@ -1,9 +1,9 @@
-import { Meal } from "../models/performer.js";
+import { Meal } from "../models/meal.js";
 
 function newMeal(req, res) {
   Meal.find({})
     .then((meals) => {
-      res.render("performers/new", {
+      res.render("meals/new", {
         title: "Add Meal",
         meals,
       });
@@ -14,4 +14,15 @@ function newMeal(req, res) {
     });
 }
 
-export { newMeal as new };
+function create(req, res) {
+  Meal.create(req.body)
+    .then((meal) => {
+      res.redirect("/meals/new");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/flights");
+    });
+}
+
+export { newMeal as new, create };

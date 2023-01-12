@@ -39,6 +39,7 @@ const flightSchema = new Schema(
       },
     },
     tickets: [ticketSchema],
+    meal: [{ type: Schema.Types.ObjectId, red: "Meal" }],
   },
   {
     timestamps: true,
