@@ -29,7 +29,11 @@
     <li><%= meals.name %></li>
     <% }) %>
   </ul>
-  <form id="add-per-to-cast" action="???" method="POST">
+  <form
+    id="add-per-to-cast"
+    action="/flights/<%= flight._id %>/meals"
+    method="POST"
+  >
     <select name="mealId">
       <% meals.forEach(meal => { %>
       <option value="<%= meal._id %>"><%= meal.name %></option>
