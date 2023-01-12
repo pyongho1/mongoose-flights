@@ -48,10 +48,18 @@ function show(req, res) {
   Flight.findById(req.params.id)
     .populate("meal")
     .then((flight) => {
-      res.render("flights/show", {
-        title: "Flight Detail",
-        flight,
-      });
+      Meal.find({ _id: { $nin: flight.meal } })
+        .then((meals) => {
+          res.render("flights/show", {
+            title: "Flight Detail",
+            flight,
+            meals,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.redirect("/");
+        });
     })
     .catch((err) => {
       console.log(err);

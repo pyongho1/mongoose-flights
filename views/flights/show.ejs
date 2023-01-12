@@ -22,6 +22,22 @@
       </a>
     </div>
   </section>
+
+  <div>Meal:</div>
+  <ul>
+    <% flight.meal.forEach(meals => { %>
+    <li><%= meals.name %></li>
+    <% }) %>
+  </ul>
+  <form id="add-per-to-cast" action="???" method="POST">
+    <select name="mealId">
+      <% meals.forEach(meal => { %>
+      <option value="<%= meal._id %>"><%= meal.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add to Meal</button>
+  </form>
+
   <h3>Tickets</h3>
   <form
     id="add-review-form"
